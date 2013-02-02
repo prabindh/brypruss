@@ -36,7 +36,8 @@ After ensuring regular run via Python invocation works, try it on browser.
 
 Place all the required files (.bin, .so) in same folder of Brython.
 
-cd Brython
-QtTestBrowser -platform minimalegl ./pru-test.html
+$$ cd Brython
+
+$$ QtTestBrowser -platform minimalegl ./pru-test.html
 
 
