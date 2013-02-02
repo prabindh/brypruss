@@ -1,0 +1,17 @@
+--- examples/blinkled/blinkled.py.orig  2000-01-01 08:37:38.000000000 +0000
++++ examples/blinkled/blinkled.py       2000-01-01 06:45:32.000000000 +0000
+@@ -1,7 +1,8 @@
+ ''' blinkled.py - test script for the PyPRUSS library'''
+
+ import pypruss
+-pypruss.modprobe()                                                             
+# This only has to be called once pr boot
++# No need to modprobe if built into kernel
++#pypruss.modprobe()                                                            
+# This only has to be called once pr boot
+ pypruss.init()
+        # Init the PRU
+ pypruss.open(0)
+                # Open PRU event 0 which is PRU0_ARM_INTERRUPT
+ pypruss.pruintc_init()
+# Init the interrupt controller

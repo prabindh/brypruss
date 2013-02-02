@@ -1,0 +1,76 @@
+<html>
+<head>
+<meta name="description" content="Hello world demo written in Brython www.brytho
+n.info">
+<meta name="keywords" content="Python,Brython">
+<meta name="author" content="Pierre Quentel">
+<meta charset="iso-8859-1">
+<script src="brython.js"></script>
+<style>
+body {font-family:arial}
+
+#pruss{
+    background-color:#000;
+    color:#6CCC00;
+    font-size:10;
+    font-family:"verdana";
+    font-weight:bold;
+    padding:5px;
+}
+
+</style>
+</head>
+<body onLoad="brython(1)">
+<img height="300" src="brython.png">
+
+<script type="text/python">
+import sys
+import datetime
+import time
+import pypruss
+
+# This only has to be called once pr boot
+pypruss.init()
+        # Init the PRU
+pypruss.open(0)
+        # Open PRU event 0 which is PRU0_ARM_INTERRUPT
+pypruss.pruintc_init()
+# Init the interrupt controller
+pypruss.exec_program(0, "./blinkled.bin")       
+pypruss.wait_for_event(0)
+# Wait for event 0 which is connected to PRU0_ARM_INTERRUPT
+pypruss.clear_event(0)
+# Clear the event
+pypruss.pru_disable(0)
+# Disable PRU 0, this is already done by the firmware
+pypruss.exit()
+
+
+</script>
+
+
+<p><span id="pruss"></span>
+
+<p><i>Brython version <span id="version"></span></i>
+<p>To write Python scripts, all you have to do is :
+
+<ul>
+<li>include the line <tt>&lt;script src="brython.js"&gt;&lt;/script&gt;</tt> in
+the HEAD section of your HTML file ; if the file brython.js in not in the same f
+older as the HTML page, replace "brython.js" by a relative or absolute path poin
+ting to brython.js
+<li>run the function <em>brython()</em> on page load : <tt>&lt;body onload="bryt
+hon()"&gt;</tt>. You can also call it with a debug mode as argument : <tt>&lt;bo
+dy onload="brython(1)"&gt;</tt> : this will write error messages to the browser
+console
+<li>write Python code in scripts inside the page :<blockquote>
+<pre>&lt;script type="text/python"&gt;
+(... python code ...)
+&lt;/script&gt;</pre></blockquote>
+</ul>
+Visit the <a href="http://www.brython.info" target="_blank">Brython site</a> for
+ a gallery of examples, documentation and contacts if you need help
+<p>Have fun !
+</body>
+</html>
+

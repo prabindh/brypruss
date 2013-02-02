@@ -1,0 +1,9 @@
+--- ./PRUSS/Makefile.orig       2000-01-01 08:35:40.000000000 +0000
++++ ./PRUSS/Makefile    2000-01-01 08:35:53.000000000 +0000
+@@ -19,6 +19,7 @@ clean:
+        rm -rf $(OBJ) *~ $(TARGET)
+
+ install:
+-       cp $(TARGET) /usr/lib/python2.7/site-packages/
++       mkdir -p /usr/lib/python2.7/dist-packages
++       cp $(TARGET) /usr/lib/python2.7/dist-packages/
